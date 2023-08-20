@@ -28,9 +28,15 @@ GSPREAD_CLIENT = gspread.authorize(SCOPED_CREDS)
 # using the open() method on our client object  and passing it the name we gave our spreadsheet. 
 SHEET = GSPREAD_CLIENT.open('love_sandwiches')
 
-# Now we have our sheet variable defined, let’s  try to access the data in our sales worksheet.
-sales = SHEET.worksheet('sales')
+def get_sales_data():
+    """
+    Get sales figures input from the user
+    """
+    print("Please enter sales data from the last market.")
+    print("Data should be six numbers, separated by commas.")
+    print("Example: 10,20,30,40,50,60\n")
 
-data = sales.get_all_values()
+    data_str = input("Enter your data here: ")
+    print(f"The data provided is {data_str}")
 
-print(data)
+get_sales_data()
